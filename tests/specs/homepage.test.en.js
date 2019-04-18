@@ -1,6 +1,17 @@
 
+const contentful = require('../helpers/contentful');
+let headers = null, footers = null;
 
 module.exports = {
+
+  'Fetch Contentful' : async (browser) => {
+    const dataHeaders = await contentful.fetch(contentful.ENTRY.HEADERS, 'en-US');
+    const dataFooters = await contentful.fetch(contentful.ENTRY.FOOTERS, 'en-US');
+    headers = JSON.parse(dataHeaders).fields;   
+    footers = JSON.parse(dataFooters).fields;   
+  },
+
+
   'Check on the Title': (browser) => {
     browser
       .url('https://www.clpsec.com')
@@ -13,29 +24,29 @@ module.exports = {
     browser.waitForElementVisible(linksSelector);
     browser.expect.element(linksSelector).to.be.visible;
     browser.expect.element('.nav-mid > li:first-child').to.be.visible;
-    browser.assert.containsText('.nav-mid > li:first-child', "Energy App Store");
+    browser.assert.containsText('.nav-mid > li:first-child', headers.energyAppStore.label);
     browser.expect.element('.nav-mid > li:nth-child(2)').to.be.visible;
-    browser.assert.containsText('.nav-mid > li:nth-child(2)', "Developer");
+    browser.assert.containsText('.nav-mid > li:nth-child(2)', headers.partnersLink.label);
     browser.expect.element('.nav-mid > li:nth-child(3)').to.be.visible;
-    browser.assert.containsText('.nav-mid > li:nth-child(3)', "About Us");
+    browser.assert.containsText('.nav-mid > li:nth-child(3)', headers.aboutUsLink.label);
     browser.expect.element('.nav-mid > li:nth-child(4)').to.be.visible;
-    browser.assert.containsText('.nav-mid > li:nth-child(4)', "FAQ");
+    browser.assert.containsText('.nav-mid > li:nth-child(4)', headers.faqsLink.label);
     browser.expect.element('.nav-mid > li:nth-child(5)').to.be.visible;
-    browser.assert.containsText('.nav-mid > li:nth-child(5)', "Support");
+    browser.assert.containsText('.nav-mid > li:nth-child(5)', headers.supportLink.label);
     browser.expect.element('.nav-mid > li:nth-child(6)').to.be.visible;
-    browser.assert.containsText('.nav-mid > li:nth-child(6)', "Contact Us");
+    browser.assert.containsText('.nav-mid > li:nth-child(6)', headers.contactUs.label);
   },
 
   'Check on the Carousel': (browser) => {
     const carouselSelector = '.carousel'
     browser.waitForElementVisible(carouselSelector);
-    browser.waitForElementVisible('.carousel-inner div:first-child', 1000)
+    browser.waitForElementVisible('ol.carousel-indicators');
     browser.assert.containsText('.carousel-inner div:first-child', 'Choose the right energy management solution for you')
     browser.assert.cssProperty(".carousel-inner div:first-child", "background-image", 'url("https://images.ctfassets.net/v7rhwo5gj231/21MlXWCGoI1K8OxOsMZOXr/8732fe168c48fbd1754cf5c168e09bf3/Heroimage_Cropped_2.jpg?w=1920&h=510&q=90&fm=jpg&fit=fill")');
-    browser.waitForElementVisible('.carousel-inner div:nth-child(2)', 7000)
+    browser.click('ol.carousel-indicators li:nth-child(2)')
     browser.assert.cssProperty(".carousel-inner div:nth-child(2)", "background-image", 'url("https://images.ctfassets.net/v7rhwo5gj231/2aJl8zm5vquWISAiMACQ4k/ac2dee6ec1eda6d03213f6f0bb2052bc/Carousel-2.png?w=1920&h=510&q=90&fm=jpg&fit=fill")');
     browser.assert.containsText('.carousel-inner div:nth-child(2)', 'Leverage digital technologies to charge up your business')
-    browser.waitForElementVisible('.carousel-inner div:nth-child(3)', 7000)
+    browser.click('ol.carousel-indicators li:nth-child(3)')
     browser.assert.cssProperty(".carousel-inner div:nth-child(3)", "background-image", 'url("https://images.ctfassets.net/v7rhwo5gj231/18Qom1uIoGk6GeEOKk2oEE/3c187131a9123e5ee7c9be238f0a2132/Carousel-3.png?w=1920&h=510&q=90&fm=jpg&fit=fill")');
     browser.assert.containsText('.carousel-inner div:nth-child(3)', 'Benefit from our partnerships with innovative developers')
   },
@@ -96,29 +107,28 @@ module.exports = {
 
   'Check on the Footer': (browser) => {
     browser.waitForElementVisible('div > .footer-1');
-    browser.assert.containsText('div > .footer-1 > ul', 'ENERGY APP STORE')
-    browser.assert.containsText('div > .footer-1 > ul', 'Enterprise Apps')
-    browser.assert.containsText('div > .footer-1 > ul', 'Utility Apps')
-    browser.assert.containsText('div > .footer-1 > ul', 'Residential Apps')
+    browser.assert.containsText('div > .footer-1 > ul', footers.energyAppStoreFooter.label)
+    browser.assert.containsText('div > .footer-1 > ul', footers.energyAppStoreFooter.enterpriseAppsLink.label)
+    browser.assert.containsText('div > .footer-1 > ul', footers.energyAppStoreFooter.utilityAppsLink.label)
+    browser.assert.containsText('div > .footer-1 > ul', footers.energyAppStoreFooter.residentialAppsLink.label)
 
 
     browser.waitForElementVisible('div > .footer-2');
-    browser.assert.containsText('div > .footer-2 > ul', 'DEVELOPER')
-    browser.assert.containsText('div > .footer-2 > ul', 'Smart Energy Connect Developer Programme')
+    browser.assert.containsText('div > .footer-2 > ul', footers.partnersFooter.label)
+    browser.assert.containsText('div > .footer-2 > ul', footers.partnersFooter.sepPartnerProgram.label)
 
     browser.waitForElementVisible('div > .footer-3');
-    browser.assert.containsText('div > .footer-3 > ul', 'SUPPORT')
-    browser.assert.containsText('div > .footer-3 > ul', 'About Us')
-    browser.assert.containsText('div > .footer-3 > ul', 'FAQ')
-    browser.assert.containsText('div > .footer-3 > ul', 'Support')       
-    browser.assert.containsText('div > .footer-3 > ul', 'Contact Us')       
+    browser.assert.containsText('div > .footer-3 > ul', footers.supportFooter.label)
+    browser.assert.containsText('div > .footer-3 > ul', footers.supportFooter.aboutUsLink.label)
+    browser.assert.containsText('div > .footer-3 > ul', footers.supportFooter.faqsLink.label)
+    browser.assert.containsText('div > .footer-3 > ul', footers.supportFooter.Support.label)       
+    browser.assert.containsText('div > .footer-3 > ul', footers.supportFooter.contactUsLink.label)       
 
 
     browser.waitForElementVisible('div > .footer-4');
-    browser.assert.containsText('div > .footer-4 > ul', 'QUICK LINKS')
-    browser.assert.containsText('div > .footer-4 > ul', 'Privacy Policy')
-    browser.assert.containsText('div > .footer-4 > ul', 'Copyright')
-    browser.assert.containsText('div > .footer-4 > ul', 'Disclaimer')       
+    browser.assert.containsText('div > .footer-4 > ul', footers.quicklinksFooter.label)
+    browser.assert.containsText('div > .footer-4 > ul', footers.quicklinksFooter.privacyLink.label)
+    browser.assert.containsText('div > .footer-4 > ul', footers.quicklinksFooter.copyrightLink.label)
+    browser.assert.containsText('div > .footer-4 > ul', footers.quicklinksFooter.disclaimerLink.label)       
   }
-
 }
