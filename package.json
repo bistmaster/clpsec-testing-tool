@@ -1,0 +1,16 @@
+{
+  "name": "clpsec-testing-tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nightwatch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chromedriver": "^73.0.0",
+    "geckodriver": "^1.16.2"
+  }
+}
