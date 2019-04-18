@@ -5,26 +5,26 @@ let headers = null, footers = null, carousels = null;
 module.exports = {
 
   'Fetch Contentful' : async (browser) => {
-    const dataHeaders = await contentful.fetch(contentful.ENTRY.HEADERS, 'en-US');
-    const dataFooters = await contentful.fetch(contentful.ENTRY.FOOTERS, 'en-US');
-    const dataHomepage = await contentful.fetch(contentful.ENTRY.HOMEPAGE, 'en-US');
-    
+    const dataHeaders = await contentful.fetch(contentful.ENTRY.HEADERS, 'zh-Hant');
+    const dataFooters = await contentful.fetch(contentful.ENTRY.FOOTERS, 'zh-Hant');
+    const dataHomepage = await contentful.fetch(contentful.ENTRY.HOMEPAGE, 'zh-Hant');
     headers = JSON.parse(dataHeaders).fields;   
     footers = JSON.parse(dataFooters).fields;   
-    homepage = JSON.parse(dataHomepage).fields; 
+    homepage = JSON.parse(dataHomepage).fields;   
   },
 
 
   'Check on the Title': (browser) => {
     browser
       .windowMaximize('current')
-      .url(`${browser.launch_url}${browser.globals.urls.home}`)
+      .url(`${browser.launch_url}${browser.globals.urls.homeZh}`)
       .waitForElementVisible('body', 30)
       .assert.title('Smart Energy Connect')
   },
 
   'Check on the link':  (browser) => {
     const linksSelector = '.nav-mid';
+    browser.waitForElementVisible(linksSelector);
     browser.expect.element(linksSelector).to.be.visible;
     browser.assert.containsText('.nav-mid > li:first-child', headers.energyAppStore.label);
     browser.assert.containsText('.nav-mid > li:nth-child(2)', headers.partnersLink.label);
@@ -39,7 +39,7 @@ module.exports = {
     browser.waitForElementVisible(carouselSelector);
     browser.waitForElementVisible('ol.carousel-indicators');
     browser.assert.containsText('.carousel-inner div:first-child', homepage.carouselSlide1.title)
-    browser.assert.cssProperty(".carousel-inner div:first-child", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/21MlXWCGoI1K8OxOsMZOXr/8732fe168c48fbd1754cf5c168e09bf3/Heroimage_Cropped_2.jpg?w=1920&h=510&q=90&fm=jpg&fit=fill")`);
+    browser.assert.cssProperty(".carousel-inner div:first-child", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/21MlXWCGoI1K8OxOsMZOXr/85896dea94616161be3b58c947482c68/Heroimage_Cropped_2.jpg?w=1920&h=510&q=90&fm=jpg&fit=fill")`);
     browser.click('ol.carousel-indicators li:nth-child(2)')
     browser.assert.cssProperty(".carousel-inner div:nth-child(2)", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/2aJl8zm5vquWISAiMACQ4k/ac2dee6ec1eda6d03213f6f0bb2052bc/Carousel-2.png?w=1920&h=510&q=90&fm=jpg&fit=fill")`);
     browser.assert.containsText('.carousel-inner div:nth-child(2)', homepage.carouselSlide2.title)
@@ -49,16 +49,15 @@ module.exports = {
   },
 
   'Check on the Feature App' : (browser) => {
-    const carouselSelector = '.sec-featured'
+    const carouselSelector = '.sec-featured';
     browser.waitForElementVisible(carouselSelector);
     browser.assert.containsText(`${carouselSelector} > h1`, homepage.featuredAppTitle.subtitle)
     browser.assert.containsText(`${carouselSelector} > h3`, homepage.featuredAppTitle.title)
     
     browser.assert.containsText('.sec-card > div:nth-child(1) .card-body > h6', homepage.featuredApp1.category);
     browser.assert.containsText('.sec-card > div:nth-child(1) .card-body > h4', homepage.featuredApp1.title);
-    browser.assert.containsText('.sec-card > div:nth-child(1) .card-body > p', homepage.featuredApp1.description.trim());
+    browser.assert.containsText('.sec-card > div:nth-child(1) .card-body > p', homepage.featuredApp1.description);
 
-    
     browser.assert.containsText('.sec-card > div:nth-child(2) .card-body > h6', homepage.featuredApp2.category);
     browser.assert.containsText('.sec-card > div:nth-child(2) .card-body > h4', homepage.featuredApp2.title);
     browser.assert.containsText('.sec-card > div:nth-child(2) .card-body > p', homepage.featuredApp2.description.trim());    
@@ -66,10 +65,9 @@ module.exports = {
     browser.assert.containsText('.sec-card > div:nth-child(3) .card-body > h6', homepage.featuredApp3.category);
     browser.assert.containsText('.sec-card > div:nth-child(3) .card-body > h4', homepage.featuredApp3.title);
     browser.assert.containsText('.sec-card > div:nth-child(3) .card-body > p', homepage.featuredApp3.description.trim());    
-  },  
+  }, 
 
   'Check on the Sections':  (browser) => {
-    browser.pause(1000);
     browser.waitForElementVisible('#content > div > .sec-details:nth-child(2)');
     browser.waitForElementVisible('#content > div > .sec-details:nth-child(3)');
     browser.waitForElementVisible('#content > div > .sec-details:nth-child(4)');

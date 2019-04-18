@@ -4,15 +4,16 @@ let headers = null, footers = null;
 module.exports = {
 
   'Fetch Contentful' : async (browser) => {
-    const dataHeaders = await contentful.fetch(contentful.ENTRY.HEADERS, 'en-US');
-    const dataFooters = await contentful.fetch(contentful.ENTRY.FOOTERS, 'en-US');
+    const dataHeaders = await contentful.fetch(contentful.ENTRY.HEADERS, 'zh-Hant');
+    const dataFooters = await contentful.fetch(contentful.ENTRY.FOOTERS, 'zh-Hant');
     headers = JSON.parse(dataHeaders).fields;   
     footers = JSON.parse(dataFooters).fields;   
   },
 
   'Check on the Title': (browser) => {
     browser
-      .url('https://www.clpsec.com/faq')
+      .windowMaximize('current')
+      .url(`${browser.launch_url}${browser.globals.urls.aboutZh}`)
       .waitForElementVisible('body', 30)
       .assert.title('Smart Energy Connect')
   },

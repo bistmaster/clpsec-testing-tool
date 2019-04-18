@@ -4,8 +4,8 @@ let headers = null, footers = null;
 module.exports = {
 
   'Fetch Contentful' : async (browser) => {
-    const dataHeaders = await contentful.fetch(contentful.ENTRY.HEADERS, 'en-US');
-    const dataFooters = await contentful.fetch(contentful.ENTRY.FOOTERS, 'en-US');
+    const dataHeaders = await contentful.fetch(contentful.ENTRY.HEADERS, 'zh-Hant');
+    const dataFooters = await contentful.fetch(contentful.ENTRY.FOOTERS, 'zh-Hant');
     headers = JSON.parse(dataHeaders).fields;   
     footers = JSON.parse(dataFooters).fields;   
   },
@@ -13,7 +13,7 @@ module.exports = {
   'Check on the Title': (browser) => {
     browser
       .windowMaximize('current')
-      .url(`${browser.launch_url}${browser.globals.urls.cookies}`)
+      .url(`${browser.launch_url}${browser.globals.urls.copyrightZh}`)
       .waitForElementVisible('body', 30)
       .assert.title('Smart Energy Connect')
   },

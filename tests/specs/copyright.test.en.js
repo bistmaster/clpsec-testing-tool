@@ -12,7 +12,8 @@ module.exports = {
 
   'Check on the Title': (browser) => {
     browser
-      .url('https://www.clpsec.com/copyright')
+      .windowMaximize('current')
+      .url(`${browser.launch_url}${browser.globals.urls.copyright}`)
       .waitForElementVisible('body', 30)
       .assert.title('Smart Energy Connect')
   },

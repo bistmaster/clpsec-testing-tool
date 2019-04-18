@@ -13,7 +13,7 @@ module.exports = {
   'Check on the Title': (browser) => {
     browser
       .windowMaximize('current')
-      .url(`${browser.launch_url}${browser.globals.urls.cookies}`)
+      .url(`${browser.launch_url}${browser.globals.urls.faq}`)
       .waitForElementVisible('body', 30)
       .assert.title('Smart Energy Connect')
   },
