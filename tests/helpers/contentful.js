@@ -20,7 +20,16 @@ exports.ENTRY = {
     'DISCLAIMER': '2wE6yLqVusa0uIeuI648u4',
     'COPYRIGHT': '3Um0JxOudqEoKmo4E6wwKO',
     'FAQ': 'v5eedRWXWCkmSaoEg8GOI',
-    'CONTACT': '1S5DrsRr5Ss0q4EsuamE6U'
+    'CONTACT': '1S5DrsRr5Ss0q4EsuamE6U',
+    'BREADCRUMB': '7Dlw7WAS2oOv7MXO6D1NLe',
+    'ONBOARDING': '1Ws0Ha9sOs2SSa0w2c8euc',
+    'CHECKLIST': 'gseRWZ3kk0eQiuMAykCy8',
+    'APPLICATIONS': '2mZyY8ljZ1nRaSDK99l0TG',
+    'ABOUT' : '5v42cA8HzU2UMoScmAMsIS',
+    'COOKIES': '3apkiQwyCQCMGG4gUwI2o4',
+    'DEVELOPER': '35XhhKCcUg2CmGym26oQMs',
+    'PICS': '31cmJJ7gmO554UwCSOG4hY',
+    'THANKYOU': '3FcBWoUTkqJh78GkBN7BRB'
 }
 
 // fetch to contentful for the contents

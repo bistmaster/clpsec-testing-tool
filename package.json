@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nightwatch"
+    "test": "nightwatch",
+    "test:bs:chrome": "nightwatch -c config/browserstack.conf.js tests/specs/desktop/",
+    "test:bs:ie": "nightwatch --env ie -c config/browserstack.conf.js tests/specs/desktop/",
+    "test:bs:edge": "nightwatch --env edge -c config/browserstack.conf.js tests/specs/desktop/",
+    "test:bs:safari": "nightwatch --env safari -c config/browserstack.conf.js tests/specs/desktop/",
+    "test:bs:firefox": "nightwatch --env firefox -c config/browserstack.conf.js tests/specs/desktop/",
+    "test:bs-local:ie": "BROWSERSTACK_ACCESS_KEY=KsRB2ahsy3zxxkmCzskx node local.runner.js --env ie -c config/local.conf.js tests/specs/desktop/"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +20,8 @@
     "geckodriver": "^1.16.2",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
+  },
+  "dependencies": {
+    "nightwatch": "^1.0.19"
   }
 }
