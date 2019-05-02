@@ -9,7 +9,7 @@ exports.verfiyBreadcrumbs = (browser, paths, isLegalPage) => {
 }
 
 exports.verifyTitle = (browser, lang, isMobile) => {
-    const {browserName} = browser.options.desiredCapabilities;
+    const browserName = browser.options.desiredCapabilities.browser;
     if (isMobile && browserName !== 'firefox') {
         browser.windowSize('current', 375, 667)
     } else {

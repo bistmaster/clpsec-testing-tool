@@ -30,18 +30,33 @@ module.exports = {
   'Check on the Carousel': (browser) => {
     const carouselSelector = '.carousel';
     if (browser.options.desiredCapabilities.browserName !== 'firefox')
-      browser.getLocationInView(carouselSelector)    
+      browser.getLocationInView(carouselSelector)
     browser.waitForElementVisible(carouselSelector);
     browser.waitForElementVisible('ol.carousel-indicators');
-    browser.assert.containsText('.carousel-inner div:first-child', homepage.carouselSlide1.title)
-    browser.assert.cssProperty(".carousel-inner div:first-child", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/21MlXWCGoI1K8OxOsMZOXr/85896dea94616161be3b58c947482c68/Heroimage_Cropped_2.jpg?w=1920&h=510&q=90&fm=jpg&fit=fill")`);
+    browser.waitForElementVisible('div.carousel-inner div.carousel-item:first-child', 10000);
+    browser.assert.containsText('div.carousel-inner div.carousel-item:first-child', homepage.carouselSlide1.title)
+   
+    if(browser.options.desiredCapabilities.browser == 'IE')
+      browser.assert.cssProperty("div.carousel-inner div.carousel-item:first-child", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/21MlXWCGoI1K8OxOsMZOXr/85896dea94616161be3b58c947482c68/Heroimage_Cropped_2.jpg?w=1920&h=510&q=90&fm=jpg&fit=fill")`.toLocaleLowerCase());
+    else
+      browser.assert.cssProperty("div.carousel-inner div.carousel-item:first-child", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/21MlXWCGoI1K8OxOsMZOXr/85896dea94616161be3b58c947482c68/Heroimage_Cropped_2.jpg?w=1920&h=510&q=90&fm=jpg&fit=fill")`);
+
     browser.click('ol.carousel-indicators li:nth-child(2)')
-    browser.assert.cssProperty(".carousel-inner div:nth-child(2)", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/2aJl8zm5vquWISAiMACQ4k/ac2dee6ec1eda6d03213f6f0bb2052bc/Carousel-2.png?w=1920&h=510&q=90&fm=jpg&fit=fill")`);
-    browser.assert.containsText('.carousel-inner div:nth-child(2)', homepage.carouselSlide2.title)
-    browser.click('ol.carousel-indicators li:nth-child(3)')
-    browser.assert.cssProperty(".carousel-inner div:nth-child(3)", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/18Qom1uIoGk6GeEOKk2oEE/3c187131a9123e5ee7c9be238f0a2132/Carousel-3.png?w=1920&h=510&q=90&fm=jpg&fit=fill")`);
-    browser.assert.containsText('.carousel-inner div:nth-child(3)', homepage.carouselSlide3.title)
-  },
+    browser.waitForElementVisible('div.carousel-inner div.carousel-item:nth-child(2)');
+    if(browser.options.desiredCapabilities.browser == 'IE')
+      browser.assert.cssProperty("div.carousel-inner div.carousel-item:nth-child(2)", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/2aJl8zm5vquWISAiMACQ4k/ac2dee6ec1eda6d03213f6f0bb2052bc/Carousel-2.png?w=1920&h=510&q=90&fm=jpg&fit=fill")`.toLocaleLowerCase());
+    else  
+      browser.assert.cssProperty("div.carousel-inner div.carousel-item:nth-child(2)", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/2aJl8zm5vquWISAiMACQ4k/ac2dee6ec1eda6d03213f6f0bb2052bc/Carousel-2.png?w=1920&h=510&q=90&fm=jpg&fit=fill")`);
+    browser.assert.containsText('div.carousel-inner div.carousel-item:nth-child(2)', homepage.carouselSlide2.title)
+    
+    browser.click('ol.carousel-indicators li:nth-child(3)');
+    browser.waitForElementVisible('div.carousel-inner div.carousel-item:nth-child(3)');
+    if(browser.options.desiredCapabilities.browser == 'IE')
+      browser.assert.cssProperty("div.carousel-inner div.carousel-item:nth-child(3)", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/18Qom1uIoGk6GeEOKk2oEE/3c187131a9123e5ee7c9be238f0a2132/Carousel-3.png?w=1920&h=510&q=90&fm=jpg&fit=fill")`.toLocaleLowerCase());
+    else  
+      browser.assert.cssProperty("div.carousel-inner div.carousel-item:nth-child(3)", "background-image", `url("${browser.globals.protocol}://images.ctfassets.net/v7rhwo5gj231/18Qom1uIoGk6GeEOKk2oEE/3c187131a9123e5ee7c9be238f0a2132/Carousel-3.png?w=1920&h=510&q=90&fm=jpg&fit=fill")`);
+    browser.assert.containsText('div.carousel-inner div.carousel-item:nth-child(3)', homepage.carouselSlide3.title)
+  },  
 
   'Check on the Feature App' : (browser) => {
     const carouselSelector = '.sec-featured'

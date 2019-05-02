@@ -9,8 +9,8 @@ const nightwatch_config = {
       default: {
         launch_url: "https://www.clpsec.com",
         desiredCapabilities: {
-            'browserstack.user': 'bethoveentodino3',
-            'browserstack.key': 'KsRB2ahsy3zxxkmCzskx',
+            'browserstack.user': 'bethoveentodino1',
+            'browserstack.key': 'SXzzC26eiH77SLJ1SEDG',
             'os': 'Windows',
             'os_version': '10',
             'browser': 'Chrome',
@@ -43,14 +43,14 @@ const nightwatch_config = {
                 "cookiesZh": "/zh/cookies",
                 "picsZh": "/zh/pics"                
             },
-            "protocol": "http"
+            "protocol": "https"
         }          
       },
       ie: {
         launch_url: "https://www.clpsec.com",
         desiredCapabilities: {
-            'browserstack.user': 'bethoveentodino3',
-            'browserstack.key': 'KsRB2ahsy3zxxkmCzskx',
+            'browserstack.user': 'bethoveentodino1',
+            'browserstack.key': 'SXzzC26eiH77SLJ1SEDG',
             'os': 'Windows',
             'os_version': '10',
             'browser': 'IE',
@@ -83,14 +83,14 @@ const nightwatch_config = {
                 "cookiesZh": "/zh/cookies",
                 "picsZh": "/zh/pics"                
             },
-            "protocol": "http"
+            "protocol": "https"
         }          
       },
       edge: {
         launch_url: "https://www.clpsec.com",
         desiredCapabilities: {
-            'browserstack.user': 'bethoveentodino3',
-            'browserstack.key': 'KsRB2ahsy3zxxkmCzskx',
+            'browserstack.user': 'bethoveentodino1',
+            'browserstack.key': 'SXzzC26eiH77SLJ1SEDG',
             'os': 'Windows',
             'os_version': '10',
             'browser': 'Edge',
@@ -123,14 +123,14 @@ const nightwatch_config = {
                 "cookiesZh": "/zh/cookies",
                 "picsZh": "/zh/pics"                
             },
-            "protocol": "http"
+            "protocol": "https"
         }          
       },      
       firefox: {
         launch_url: "https://www.clpsec.com",
         desiredCapabilities: {
-            'browserstack.user': 'bethoveentodino3',
-            'browserstack.key': 'KsRB2ahsy3zxxkmCzskx',
+            'browserstack.user': 'bethoveentodino1',
+            'browserstack.key': 'SXzzC26eiH77SLJ1SEDG',
             'os': 'Windows',
             'os_version': '10',
             'browser': 'Firefox',
@@ -163,14 +163,14 @@ const nightwatch_config = {
                 "cookiesZh": "/zh/cookies",
                 "picsZh": "/zh/pics"                
             },
-            "protocol": "http"
+            "protocol": "https"
         }          
       },
       safari: {
         launch_url: "https://www.clpsec.com",
         desiredCapabilities: {
-            'browserstack.user': 'bethoveentodino3',
-            'browserstack.key': 'KsRB2ahsy3zxxkmCzskx',
+            'browserstack.user': 'bethoveentodino1',
+            'browserstack.key': 'SXzzC26eiH77SLJ1SEDG',
             'os': 'OS X',
             'os_version': 'Mojave',
             'browser': 'Safari',
@@ -203,7 +203,7 @@ const nightwatch_config = {
                 "cookiesZh": "/zh/cookies",
                 "picsZh": "/zh/pics"                
             },
-            "protocol": "http"
+            "protocol": "https"
         }          
       }
     }
