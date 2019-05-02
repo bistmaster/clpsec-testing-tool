@@ -17,13 +17,13 @@
   "license": "ISC",
   "devDependencies": {
     "geckodriver": "^1.16.2",
-    "nightwatch-slack-reporter": "0.0.2",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },
   "dependencies": {
     "chromedriver": "^74.0.0",
     "nightwatch": "^1.0.19",
-    "nightwatch-html-reporter": "^2.0.6"
+    "nightwatch-html-reporter": "^2.0.6",
+    "nightwatch-slack-reporter": "0.0.2"
   }
 }
