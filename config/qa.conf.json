@@ -43,11 +43,11 @@
                 "cookiesZh": "/zh/cookies",
                 "picsZh": "/zh/pics"                
             },
-            "protocol": "http"
+            "protocol": "https"
         }
       },
       "safari" : {
-        "launch_url": "http://localhost:8000",
+        "launch_url": "https://dev.clpsec.io",
         "desiredCapabilities": {
             "javascriptEnabled": true,            
             "browserName": "safari"
@@ -80,11 +80,11 @@
                 "cookiesZh": "/zh/cookies",
                 "picsZh": "/zh/pics"                
             },
-            "protocol": "http"
+            "protocol": "https"
         }
       },     
       "firefox" : {
-        "launch_url": "http://localhost:8000",
+        "launch_url": "https://dev.clpsec.io",
         "desiredCapabilities": {
             "browserName": "firefox",
             "marionette": true,
@@ -125,11 +125,11 @@
                 "cookiesZh": "/zh/cookies",
                 "picsZh": "/zh/pics"                
             },
-            "protocol": "http"
+            "protocol": "https"
         }
       }, 
       "ie" : {
-        "launch_url": "https://www.clpsec.com",
+        "launch_url": "https://dev.clpsec.io",
         "desiredCapabilities": {
             "browserName": "firefox"
         },
@@ -164,11 +164,11 @@
                 "cookiesZh": "/zh/cookies",
                 "picsZh": "/zh/pics"                
             },
-            "protocol": "http"
+            "protocol": "https"
         }
       },             
       "production:chrome": {
-        "launch_url" : "https://www.clpsec.com",
+        "launch_url" : "https://dev.clpsec.io",
         "desiredCapabilities": {
             "browserName": "chrome"
         },
@@ -201,7 +201,7 @@
         }         
       },
       "production:safari": {
-        "launch_url" : "https://www.clpsec.com",
+        "launch_url" : "https://dev.clpsec.io",
         "desiredCapabilities": {
             "javascriptEnabled": true,            
             "browserName": "safari"
@@ -240,7 +240,7 @@
         }         
       },
       "production:firefox": {
-        "launch_url" : "https://www.clpsec.com",
+        "launch_url" : "https://dev.clpsec.io",
         "desiredCapabilities": {
             "browserName": "firefox"
         },
