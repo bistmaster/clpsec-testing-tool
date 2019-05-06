@@ -19,7 +19,7 @@ exports.verifyTitle = (browser, lang, isMobile) => {
 
     browser.url(`${browser.launch_url}${lang}`)
          .waitForElementVisible('body', 30)
-         .assert.title('Smart Energy Connect')    
+         .assert.title('Smart Energy Connect1')    
 }
 
 exports.verifyLinks = (browser, headers, isMobile) => {
